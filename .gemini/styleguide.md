@@ -5,7 +5,6 @@ Review pull requests only for high-severity correctness, packaging, security, or
 ## 1. Repository Invariants
 
 * **Skill Frontmatter and Directory Naming**: Every `skills/<dir>/SKILL.md` file must include YAML frontmatter with `name` equal to the directory name (`egm-*`) and a non-empty `description`. Every `agents/<name>.md` file must include `name` and `description` frontmatter.
-* **Runtime Bundle Parity**: Changes to `skills/`, `agents/`, `resources/`, `docs/`, `assets/`, `README.md`, `LICENSE`, `plugin.json`, or `.claude-plugin/` must preserve `python3 scripts/pack_plugin.py --target claude --output distributions/claude` parity with `distributions/claude/`.
 * **GitHub Flavored Markdown Tables**: Never use multiline `:` continuation rows in Markdown tables. Every table row must stay on one line so GitHub renders it properly.
 * **Relative Link Integrity**: All relative Markdown links and intra-document `#heading` anchors must resolve on disk.
 * **GitHub Actions Security (`zizmor`)**: Keep top-level workflow `permissions` minimal (`{}` or `contents: read`). Declare write scopes only on the specific job that needs them, and set `persist-credentials: false` on `actions/checkout`.
@@ -16,7 +15,6 @@ Review pull requests only for high-severity correctness, packaging, security, or
 Do not flag any of the following intentional repository conventions:
 
 * **Missing `$schema` in Root `plugin.json`**: Root `plugin.json` intentionally omits `$schema` so OhMyPi (`omp`) and OpenCode parsers do not reject the manifest. The Copilot CLI manifest at `.plugin/plugin.json` carries `$schema`.
-* **Checked-In `distributions/claude/` Runtime Tree**: The repository checks in `distributions/claude/` for the Anthropic directory portal and checks parity in `tests/unit/test_packaging.py`.
 * **Hardcoded SHA Pins in `.github/workflows/`**: Repository security rules require Action SHA pins and `zizmor: ignore[...]` annotations with inline justifications.
 * **Scope Advisory Thresholds**: Do not duplicate scope or template checks handled by `.github/workflows/pr-scope-advisory.yml`.
 
