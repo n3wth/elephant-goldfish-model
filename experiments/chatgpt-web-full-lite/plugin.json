@@ -1,0 +1,26 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "egm-full-lite-preview",
+  "version": "0.1.0",
+  "description": "A private web test of the full EGM skill set with a separate Lite workflow.",
+  "author": { "name": "Elephant-Goldfish Model contributors" },
+  "repository": "https://github.com/google/elephant-goldfish-model",
+  "license": "Apache-2.0",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "EGM Full + Lite Preview",
+        "shortDescription": "Full EGM skills and web Lite",
+        "longDescription": "A private experiment that exposes the full EGM skill set and a separate document-first EGM Lite skill in ChatGPT Work. The full workflows may require local files, shell tools, or isolated subagents that a web host does not provide.",
+        "developerName": "Elephant-Goldfish Model contributors",
+        "category": "Productivity",
+        "capabilities": ["Develop ideas", "Draft and review plans", "Explore EGM Lite"],
+        "defaultPrompt": [
+          "Use EGM Lite to help me think through an idea or document.",
+          "Use the full EGM brainstorm workflow for this idea.",
+          "Review this document with the full EGM workflow."
+        ]
+      }
+    }
+  }
+}
